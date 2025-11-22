@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="799.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tlotlanang.virtualstockexchange.clientController">
+   <left>
+      <VBox alignment="CENTER" prefHeight="326.0" prefWidth="160.0" spacing="20" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="loginUserName" prefHeight="26.0" prefWidth="120.0" />
+            <PasswordField fx:id="loginPassword" />
+            <FlowPane hgap="10" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" text="Login" />
+
+                  <Button id="Register" fx:id="registerButton" mnemonicParsing="false" onAction="#Register" text="Register" />
+               </children>
+            </FlowPane>
+
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <Pane prefHeight="562.0" prefWidth="122.0" BorderPane.alignment="CENTER" />
+   </right>
+
+   <center>
+       <TabPane fx:id="menuTabpane" prefHeight="562.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+           <tabs>
+               <Tab text="OverView">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                               <SplitPane dividerPositions="0.5" layoutY="-1.0" orientation="VERTICAL" prefHeight="538.0" prefWidth="515.0">
+                                   <items>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                           <children>
+                                               <LineChart layoutX="-14.0" layoutY="6.0" prefHeight="252.0" prefWidth="528.0">
+                                                   <xAxis>
+                                                       <CategoryAxis side="BOTTOM" />
+                                                   </xAxis>
+                                                   <yAxis>
+                                                       <NumberAxis side="LEFT" />
+                                                   </yAxis>
+                                               </LineChart>
+                                           </children>
+                                       </AnchorPane>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                           <children>
+                                               <AreaChart layoutX="-7.0" layoutY="3.0" prefHeight="267.0" prefWidth="528.0">
+                                                   <xAxis>
+                                                       <CategoryAxis side="BOTTOM" />
+                                                   </xAxis>
+                                                   <yAxis>
+                                                       <NumberAxis side="LEFT" />
+                                                   </yAxis>
+                                               </AreaChart>
+                                           </children>
+                                       </AnchorPane>
+                                   </items>
+                               </SplitPane>
+                           </children></AnchorPane>
+                   </content>
+               </Tab>
+               <Tab fx:id="Markets" text="Markets">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="278.0">
+                           <children>
+                               <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="539.0" prefWidth="523.0">
+                                   <children>
+                                       <TableView layoutX="-3.0" layoutY="8.0" prefHeight="538.0" prefWidth="532.0">
+                                           <columns>
+                                               <TableColumn prefWidth="214.5999755859375" text="Company Name" />
+                                               <TableColumn minWidth="0.0" prefWidth="95.39996337890625" text="Shares" />
+                                               <TableColumn minWidth="0.0" prefWidth="95.39996337890625" text="Company Value" />
+
+                                           </columns>
+                                       </TableView>
+                                   </children>
+                               </Pane>
+                           </children></AnchorPane>
+                   </content>
+               </Tab>
+               <Tab text="Listings">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                   </content>
+               </Tab>
+               <Tab fx:id="Currencies" text="Register">
+                   <content>
+                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="278.0">
+                           <children>
+                               <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="539.0" prefWidth="523.0">
+                                   <children>
+                                       <TableView layoutX="-3.0" layoutY="8.0" prefHeight="538.0" prefWidth="532.0">
+                                           <columns>
+                                               <TableColumn prefWidth="214.5999755859375" text="Company Name" />
+                                               <TableColumn minWidth="0.0" prefWidth="95.39996337890625" text="Shares" />
+                                               <TableColumn minWidth="0.0" prefWidth="95.39996337890625" text="Company Value" />
+
+                                           </columns>
+                                       </TableView>
+                                   </children>
+                               </Pane>
+                           </children></AnchorPane>
+                   </content>
+               </Tab>
+           </tabs>
+       </TabPane>
+
+
+
+   </center>
+   <top>
+      <Pane prefHeight="49.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="335.0" layoutY="16.0" text="SMALL BUSINESS STOCK EXCHANGE" textAlignment="CENTER" textFill="#f7f7f7" />
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane prefHeight="66.0" prefWidth="799.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="372.0" layoutY="25.0" text="Moving text of indicies" />
+         </children>
+      </Pane>
+   </bottom>
+</BorderPane>
