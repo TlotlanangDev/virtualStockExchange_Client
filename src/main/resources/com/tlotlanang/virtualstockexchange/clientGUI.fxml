@@ -6,33 +6,50 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="799.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tlotlanang.virtualstockexchange.clientController">
    <left>
-      <VBox alignment="CENTER" prefHeight="326.0" prefWidth="160.0" spacing="20" BorderPane.alignment="CENTER">
+      <VBox fx:id="loginVbox" alignment="CENTER" prefHeight="326.0" prefWidth="160.0" spacing="20" BorderPane.alignment="CENTER">
          <children>
+            <Label fx:id="usernamewarning" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Enter UserName" />
             <TextField fx:id="loginUserName" prefHeight="26.0" prefWidth="120.0" />
+            <Label fx:id="passwordwarning" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Enter Password" />
             <PasswordField fx:id="loginPassword" />
             <FlowPane hgap="10" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" text="Login" />
 
-                  <Button id="Register" fx:id="registerButton" mnemonicParsing="false" onAction="#Register" text="Register" />
+                  <Button id="Register" fx:id="registerButton" mnemonicParsing="false" onAction="#mainregisterButton" text="Register" />
                </children>
             </FlowPane>
 
          </children>
       </VBox>
+
    </left>
+
    <right>
-      <Pane prefHeight="562.0" prefWidth="122.0" BorderPane.alignment="CENTER" />
+       <AnchorPane fx:id="Registeranchorpane" managed="false" prefHeight="562.0" prefWidth="490.0" visible="false" BorderPane.alignment="CENTER">
+           <TextField layoutX="-94.0" layoutY="22.0" />
+           <TextField layoutX="126.0" layoutY="22.0" />
+           <PasswordField layoutX="-94.0" layoutY="358.0" />
+           <Button layoutX="59.0" layoutY="466.0" mnemonicParsing="false" onAction="#registerAccount" text="Register" />
+         <TextField layoutX="-94.0" layoutY="79.0" />
+         <TextField layoutX="126.0" layoutY="79.0" />
+         <CheckBox layoutX="-94.0" layoutY="413.0" mnemonicParsing="false" text="Terms &amp; Conditions" />
+         <ProgressBar layoutX="130.0" layoutY="413.0" prefHeight="18.0" prefWidth="121.0" progress="0.0" />
+         <TextArea layoutX="-97.0" layoutY="138.0" prefHeight="200.0" prefWidth="372.0" />
+         <PasswordField layoutX="126.0" layoutY="358.0" />
+         <Button fx:id="backToMain" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="412.0" layoutY="9.0" mnemonicParsing="false" onAction="#backMainPage" text="&lt;Back" />
+       </AnchorPane>
    </right>
 
+
    <center>
-       <TabPane fx:id="menuTabpane" prefHeight="562.0" prefWidth="577.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+       <TabPane fx:id="menuTabpane" prefHeight="562" prefWidth="568.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
            <tabs>
-               <Tab text="OverView">
+               <Tab fx:id="overview" text="OverView">
                    <content>
                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                               <SplitPane dividerPositions="0.5" layoutY="-1.0" orientation="VERTICAL" prefHeight="538.0" prefWidth="515.0">
+                               <SplitPane dividerPositions="0.5" layoutY="-1.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="580.0">
                                    <items>
                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                            <children>
@@ -44,6 +61,8 @@
                                                        <NumberAxis side="LEFT" />
                                                    </yAxis>
                                                </LineChart>
+                           
+
                                            </children>
                                        </AnchorPane>
                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -111,11 +130,12 @@
 
 
 
+
    </center>
    <top>
       <Pane prefHeight="49.0" prefWidth="595.0" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="CENTER" layoutX="335.0" layoutY="16.0" text="SMALL BUSINESS STOCK EXCHANGE" textAlignment="CENTER" textFill="#f7f7f7" />
+            <Label contentDisplay="CENTER" layoutX="302.0" layoutY="16.0" text="SMALL BUSINESS STOCK EXCHANGE" textAlignment="CENTER" textFill="#f7f7f7" />
          </children>
       </Pane>
    </top>

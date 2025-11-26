@@ -1,24 +1,29 @@
 package com.tlotlanang.virtualstockexchange;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
 public class clientController {
 
 
-    
     @FXML
-    private Tab RegisterTab;
+    private Label passwordwarning;
+    @FXML
+    private Tab overview;
+    @FXML
+    private Label usernamewarning;
+    @FXML
+    private VBox loginVbox;
+    @FXML
+    private Pane Registeranchorpane;
     @FXML
     private TabPane menuTabpane;
-    @FXML
-    private TabPane RegisterTabpane;
     @FXML
     private PasswordField loginPassword;
     @FXML
@@ -31,20 +36,28 @@ public class clientController {
 /*Login page, it communicates with the server when the user wants to log in, the server will communicate with the database
 to check is user information is available.*/
     public void login(ActionEvent event) {
+
+        //Get username input
         String userName = loginUserName.getText();
+        //Get user password input
         String passWord = loginPassword.getText();
+        //A condition to ensure both inputs are not empty
         if(userName.isEmpty()){
-            System.out.println("Please Enter Username");
+            usernamewarning.setText("Please Enter Username!!");
+            usernamewarning.setTextFill(Color.RED.darker());
 
         } else if (passWord.isEmpty()) {
-            System.out.println("Please Enter Password");
+            passwordwarning.setText("Please Enter Password!!");
+            passwordwarning.setTextFill(Color.RED.darker());
         } else {
-
+            //Connection to server
             connectionToServer.connectionPorts();
             connectionToServer.connectionStreams();
             try {
+                //send inputs to server
                 connectionToServer.outputstream.writeUTF(userName);
                 connectionToServer.outputstream.writeUTF(passWord);
+                //output from server
                 String message = connectionToServer.inputstream.readUTF();
                 System.out.println(message);
             } catch (IOException e) {
@@ -54,22 +67,30 @@ to check is user information is available.*/
         }
 
     }
-
-    public void Register(ActionEvent event) {
-
-        if(!RegisterTabpane.isVisible()){
-
-            RegisterTabpane.setVisible(true);
-            RegisterTabpane.setManaged(true);
-
-        }else {
+    //Register button in the main page when user does not have an account, when clicked,menu page disappears and register page appears
+    public void mainregisterButton(ActionEvent event) {
+        if(menuTabpane.isVisible()){
             menuTabpane.setVisible(false);
             menuTabpane.setManaged(false);
+            Registeranchorpane.setVisible(true);
+            Registeranchorpane.setManaged(true);
+            loginVbox.setVisible(false);
 
         }
 
-        //menuTabpane.getSelectionModel().select(RegisterTab);
+    }
+    //The "Back" button on the register page to allow the user to go back to the main page if they clicked register by mistake
+    public void backMainPage(ActionEvent event){
 
+        if(!menuTabpane.isVisible()) {
+            menuTabpane.setVisible(true);
+            menuTabpane.setManaged(true);
+            Registeranchorpane.setVisible(false);
+            Registeranchorpane.setManaged(false);
+            loginVbox.setVisible(true);
+        }
+    }
+    public void registerAccount(){
 
     }
 }
