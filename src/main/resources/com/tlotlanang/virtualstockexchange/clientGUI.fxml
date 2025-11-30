@@ -42,7 +42,6 @@
        </AnchorPane>
    </right>
 
-
    <center>
        <TabPane fx:id="menuTabpane"  prefHeight="562" prefWidth="568.0" tabClosingPolicy="UNAVAILABLE"  BorderPane.alignment="CENTER">
            <tabs>
