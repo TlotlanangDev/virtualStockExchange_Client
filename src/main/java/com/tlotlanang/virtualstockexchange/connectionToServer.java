@@ -14,7 +14,7 @@ public class connectionToServer {
     public static void connectionPorts() {
     try
     {
-        socket = new Socket("localhost", 9000);
+        socket = new Socket("127.0.0.1", 9000);
 
 
     } catch(
@@ -27,9 +27,7 @@ public static void connectionStreams(){
     try {
         inputstream = new DataInputStream(socket.getInputStream());
         outputstream = new DataOutputStream(socket.getOutputStream());
-        //outputstream.writeUTF("Hello Server");
-        //String message = inputstream.readUTF();
-        //System.out.println(message);
+
     } catch (IOException e) {
         throw new RuntimeException(e);
     }

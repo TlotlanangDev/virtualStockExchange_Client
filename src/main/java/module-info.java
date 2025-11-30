@@ -13,6 +13,7 @@ module com.tlotlanang.virtualstockexchange {
     requires java.logging;
     requires annotations;
     requires javafx.graphics;
+    requires java.sql;
 
     opens com.tlotlanang.virtualstockexchange to javafx.fxml;
     exports com.tlotlanang.virtualstockexchange;
