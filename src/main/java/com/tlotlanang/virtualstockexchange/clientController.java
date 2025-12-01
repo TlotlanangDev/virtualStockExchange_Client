@@ -3,27 +3,32 @@ package com.tlotlanang.virtualstockexchange;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.input.DataFormat;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.Socket;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.Instant;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class clientController {
 
 
+    @FXML
+    private Label welcomemesage;
+    @FXML
+    private Label regphoneNumWarning;
+    @FXML
+    private Label regemailwarning;
+    @FXML
+    private Label regNameWarning;
+    @FXML
+    private Label regSurnameWarn;
+    @FXML
+    private Label regaddWarning;
+    @FXML
+    private Label regPasswordWarn;
+    @FXML
+    private Label regconfPassWarn;
+    @FXML
+    private Label regbirthDateWarn;
     @FXML
     private DatePicker registerDateofBirth;
     @FXML
@@ -56,10 +61,11 @@ public class clientController {
     private PasswordField loginPassword;
     @FXML
     private TextField loginUserName;
-    @FXML
-    private Button loginButton;
+    //@FXML
+    //private Button loginButton;
     @FXML
     private Button registerButton;
+    int phoneNumber;
 
 /*Login page, it communicates with the server when the user wants to log in, the server will communicate with the database
 to check is user information is available.*/
@@ -138,34 +144,92 @@ to check is user information is available.*/
         }
     }
     public void registerAccount(){
-        connectionToServer.connectionPorts();
-        connectionToServer.connectionStreams();
+
+        String userName = registerName.getText();
+        String userSurname = registerSurName.getText();
+        String emailAddress = registerEmail.getText();
+        String passWord = registerPassword.getText();
+        String confirmPass = registerConfPassW.getText();
+        String physicalAddress = registerAddress.getText();
+        String dateOfBirth = registerDateofBirth.toString();
+        //catches interger exception to deal with formatting if input not an integer or is blank
         try {
-
-            //send inputs to server
-            connectionToServer.outputstream.writeUTF("Register");
-            //output from server
-            String returnrequest = connectionToServer.inputstream.readUTF();
-            String confirmRequest = connectionToServer.inputstream.readUTF();
-            String returnLogin = "Login";
-            String returnRegister = "Register";
-            if (returnrequest.equals(returnLogin)) {
-
-                System.out.println("Error!!!");
-            } else if (returnrequest.equals(returnRegister)) {
-                System.out.println(confirmRequest);
-            } else {
-                System.out.println("Error!!!!");
-            }
-
-            connectionToServer.closeresources();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-
+            phoneNumber = Integer.parseInt(registerPhone.getText());
+        }catch (NumberFormatException e){
+            regphoneNumWarning.setText("Phone Numbers!");
+            regphoneNumWarning.setTextFill(Color.RED.darker());
+        }catch (Exception e){
+            System.out.println(e);
         }
 
+        //A condition to ensure both inputs are not empty
+        if(userName.isEmpty() && userSurname.isEmpty() && emailAddress.isEmpty() && physicalAddress.isEmpty() && passWord.isEmpty()
+                && confirmPass.isEmpty() && dateOfBirth.isEmpty()){
+            welcomemesage.setText("Please Fill All Textfields!!");
+            welcomemesage.setTextFill(Color.RED.darker());
 
+        } else if(userName.isEmpty()){
+            regNameWarning.setText("Enter Username!!");
+            regNameWarning.setTextFill(Color.RED.darker());
+        } else if (userSurname.isEmpty()) {
+            regSurnameWarn.setText("Enter Surname!!");
+            regSurnameWarn.setTextFill(Color.RED.darker());
+        } else if (emailAddress.isEmpty()) {
+            regemailwarning.setText("Enter Email!!");
+            regemailwarning.setTextFill(Color.RED.darker());
+        } else if (physicalAddress.isEmpty()) {
+            regaddWarning.setText("Enter Address!!");
+            regaddWarning.setTextFill(Color.RED.darker());
+        } else if (passWord.isEmpty()) {
+            regPasswordWarn.setText("Enter Password!!");
+            regPasswordWarn.setTextFill(Color.RED.darker());
+        }  else if (confirmPass.isEmpty()) {
+            regconfPassWarn.setText("Confirm Password!!");
+            regconfPassWarn.setTextFill(Color.RED.darker());
+        }  else if (dateOfBirth.isEmpty()) {
+            regbirthDateWarn.setText("Enter Date Of Birth!!");
+            regbirthDateWarn.setTextFill(Color.RED.darker());
+        }else {
+            connectionToServer.connectionPorts();
+            connectionToServer.connectionStreams();
+            try {
+
+                //send register message to server to inform server to use register method
+                connectionToServer.outputstream.writeUTF("Register");
+                //return request from server to confirm if its register
+                String returnrequest = connectionToServer.inputstream.readUTF();
+
+
+                String returnLogin = "Login";
+                String returnRegister = "Register";
+                //if return request is login, its an error, if its register, the send inputs from textfields to the server
+
+                if (returnrequest.equals(returnLogin)) {
+
+                    System.out.println("Error!!!");
+                } else if (returnrequest.equals(returnRegister)) {
+                    connectionToServer.outputstream.writeUTF(userName);
+                    connectionToServer.outputstream.writeUTF(userSurname);
+                    connectionToServer.outputstream.writeUTF(passWord);
+                    connectionToServer.outputstream.writeUTF(dateOfBirth);
+                    connectionToServer.outputstream.writeUTF(emailAddress);
+                    connectionToServer.outputstream.writeUTF(String.valueOf(phoneNumber));
+                    connectionToServer.outputstream.writeUTF(physicalAddress);
+
+                    String regiconfirm = connectionToServer.inputstream.readUTF();
+                    System.out.println(regiconfirm);
+                } else {
+                    System.out.println("Error!!!!");
+                }
+                //close sockets
+                connectionToServer.closeresources();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+
+            }
+
+        }
     }
 
 }

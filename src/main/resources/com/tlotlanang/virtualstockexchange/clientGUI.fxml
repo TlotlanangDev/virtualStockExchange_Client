@@ -14,7 +14,7 @@
             <PasswordField fx:id="loginPassword" />
             <FlowPane hgap="10" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" text="Login" />
+                  <Button mnemonicParsing="false" onAction="#login" text="Login" />
 
                   <Button id="Register" fx:id="registerButton" mnemonicParsing="false" onAction="#mainregisterButton" text="Register" />
                </children>
@@ -26,24 +26,32 @@
    </left>
 
    <right>
-       <AnchorPane fx:id="Registeranchorpane" prefHeight="562.0" managed="false" visible="false" prefWidth="490.0" BorderPane.alignment="CENTER">
+       <AnchorPane fx:id="Registeranchorpane" managed="false" prefHeight="562.0" prefWidth="490.0" visible="false" BorderPane.alignment="CENTER">
            <TextField fx:id="registerName" layoutX="-94.0" layoutY="22.0" />
            <TextField fx:id="registerSurName" layoutX="126.0" layoutY="22.0" />
            <PasswordField fx:id="registerPassword" layoutX="-94.0" layoutY="358.0" />
            <Button layoutX="59.0" layoutY="466.0" mnemonicParsing="false" onAction="#registerAccount" text="Register" />
          <TextField fx:id="registerEmail" layoutX="-94.0" layoutY="79.0" />
          <TextField fx:id="registerPhone" layoutX="126.0" layoutY="79.0" />
-         <CheckBox layoutX="126.0" layoutY="413.0" mnemonicParsing="false" text="Terms &amp; Conditions" />
+         <CheckBox layoutX="126.0" layoutY="413.0" mnemonicParsing="false" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Terms &amp; Conditions" />
          <TextArea fx:id="registerAddress" layoutX="-97.0" layoutY="138.0" prefHeight="200.0" prefWidth="372.0" />
          <PasswordField fx:id="registerConfPassW" layoutX="126.0" layoutY="358.0" />
          <Button fx:id="backToMain" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="412.0" layoutY="9.0" mnemonicParsing="false" onAction="#backMainPage" text="&lt;Back" />
 
          <DatePicker fx:id="registerDateofBirth" layoutX="-94.0" layoutY="409.0" />
+         <Label fx:id="regphoneNumWarning" layoutX="168.0" layoutY="61.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Phone Number" />
+         <Label fx:id="regemailwarning" layoutX="-57.0" layoutY="61.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Email Address" />
+         <Label fx:id="regNameWarning" layoutX="-57.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Name" />
+         <Label fx:id="regSurnameWarn" layoutX="176.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Surname" />
+         <Label fx:id="regaddWarning" layoutX="41.0" layoutY="120.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Physical Address" />
+         <Label fx:id="regPasswordWarn" layoutX="-57" layoutY="338.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Password" />
+         <Label fx:id="regconfPassWarn" layoutX="142.0" layoutY="338.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Confirm Password" />
+         <Label fx:id="regbirthDateWarn" layoutX="-57" layoutY="392.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Date Of Birth" />
        </AnchorPane>
    </right>
 
    <center>
-       <TabPane fx:id="menuTabpane"  prefHeight="562" prefWidth="568.0" tabClosingPolicy="UNAVAILABLE"  BorderPane.alignment="CENTER">
+       <TabPane fx:id="menuTabpane" prefHeight="562" prefWidth="568.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
            <tabs>
                <Tab fx:id="overview" text="OverView">
                    <content>
@@ -135,7 +143,7 @@
    <top>
       <Pane prefHeight="49.0" prefWidth="595.0" BorderPane.alignment="CENTER">
          <children>
-            <Label contentDisplay="CENTER" layoutX="302.0" layoutY="16.0" text="SMALL BUSINESS STOCK EXCHANGE" textAlignment="CENTER" textFill="#f7f7f7" />
+            <Label fx:id="welcomemesage" contentDisplay="CENTER" layoutX="302.0" layoutY="16.0" text="SMALL BUSINESS STOCK EXCHANGE" textAlignment="CENTER" textFill="#f7f7f7" />
          </children>
       </Pane>
    </top>
