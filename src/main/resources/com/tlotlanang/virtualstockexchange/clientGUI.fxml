@@ -33,7 +33,7 @@
            <Button layoutX="59.0" layoutY="466.0" mnemonicParsing="false" onAction="#registerAccount" text="Register" />
          <TextField fx:id="registerEmail" layoutX="-94.0" layoutY="79.0" />
          <TextField fx:id="registerPhone" layoutX="126.0" layoutY="79.0" />
-         <CheckBox layoutX="126.0" layoutY="413.0" mnemonicParsing="false" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Terms &amp; Conditions" />
+         <CheckBox layoutX="126.0" fx:id="termsandConditions" layoutY="413.0" mnemonicParsing="false" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Terms &amp; Conditions" />
          <TextArea fx:id="registerAddress" layoutX="-97.0" layoutY="138.0" prefHeight="200.0" prefWidth="372.0" />
          <PasswordField fx:id="registerConfPassW" layoutX="126.0" layoutY="358.0" />
          <Button fx:id="backToMain" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="412.0" layoutY="9.0" mnemonicParsing="false" onAction="#backMainPage" text="&lt;Back" />

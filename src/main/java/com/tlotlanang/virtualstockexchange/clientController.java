@@ -7,10 +7,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class clientController {
 
 
+    @FXML
+    private CheckBox termsandConditions;
     @FXML
     private Label welcomemesage;
     @FXML
@@ -151,10 +154,12 @@ to check is user information is available.*/
         String passWord = registerPassword.getText();
         String confirmPass = registerConfPassW.getText();
         String physicalAddress = registerAddress.getText();
-        String dateOfBirth = registerDateofBirth.toString();
+        LocalDate dateOfBirth = registerDateofBirth.getValue();
         //catches interger exception to deal with formatting if input not an integer or is blank
+
         try {
             phoneNumber = Integer.parseInt(registerPhone.getText());
+
         }catch (NumberFormatException e){
             regphoneNumWarning.setText("Phone Numbers!");
             regphoneNumWarning.setTextFill(Color.RED.darker());
@@ -162,19 +167,15 @@ to check is user information is available.*/
             System.out.println(e);
         }
 
-        //A condition to ensure both inputs are not empty
-        if(userName.isEmpty() && userSurname.isEmpty() && emailAddress.isEmpty() && physicalAddress.isEmpty() && passWord.isEmpty()
-                && confirmPass.isEmpty() && dateOfBirth.isEmpty()){
-            welcomemesage.setText("Please Fill All Textfields!!");
-            welcomemesage.setTextFill(Color.RED.darker());
 
-        } else if(userName.isEmpty()){
+        //A condition to ensure both inputs are not empty
+         if(userName.isEmpty()){
             regNameWarning.setText("Enter Username!!");
             regNameWarning.setTextFill(Color.RED.darker());
         } else if (userSurname.isEmpty()) {
             regSurnameWarn.setText("Enter Surname!!");
             regSurnameWarn.setTextFill(Color.RED.darker());
-        } else if (emailAddress.isEmpty()) {
+        } else if (emailAddress.isEmpty() || !emailAddress.contains("@") || !emailAddress.contains(".")) {
             regemailwarning.setText("Enter Email!!");
             regemailwarning.setTextFill(Color.RED.darker());
         } else if (physicalAddress.isEmpty()) {
@@ -186,10 +187,14 @@ to check is user information is available.*/
         }  else if (confirmPass.isEmpty()) {
             regconfPassWarn.setText("Confirm Password!!");
             regconfPassWarn.setTextFill(Color.RED.darker());
-        }  else if (dateOfBirth.isEmpty()) {
-            regbirthDateWarn.setText("Enter Date Of Birth!!");
-            regbirthDateWarn.setTextFill(Color.RED.darker());
-        }else {
+        } else if (dateOfBirth.equals(null)) {
+
+                 regbirthDateWarn.setText("Enter Date Of Birth!!");
+                 regbirthDateWarn.setTextFill(Color.RED.darker());
+        } else if (!termsandConditions.isSelected()) {
+            termsandConditions.setText("Terms and Conditions");
+            termsandConditions.setTextFill(Color.RED.darker());
+        } else {
             connectionToServer.connectionPorts();
             connectionToServer.connectionStreams();
             try {
@@ -211,7 +216,7 @@ to check is user information is available.*/
                     connectionToServer.outputstream.writeUTF(userName);
                     connectionToServer.outputstream.writeUTF(userSurname);
                     connectionToServer.outputstream.writeUTF(passWord);
-                    connectionToServer.outputstream.writeUTF(dateOfBirth);
+                    connectionToServer.outputstream.writeUTF(String.valueOf(dateOfBirth));
                     connectionToServer.outputstream.writeUTF(emailAddress);
                     connectionToServer.outputstream.writeUTF(String.valueOf(phoneNumber));
                     connectionToServer.outputstream.writeUTF(physicalAddress);
