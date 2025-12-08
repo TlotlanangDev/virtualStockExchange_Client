@@ -64,17 +64,13 @@ public class clientController {
     private PasswordField loginPassword;
     @FXML
     private TextField loginUserName;
-    //@FXML
-    //private Button loginButton;
     @FXML
     private Button registerButton;
     int phoneNumber;
 
 /*Login page, it communicates with the server when the user wants to log in, the server will communicate with the database
 to check is user information is available.*/
-    //static Socket socket;
-    //static DataInputStream inputstream;
-    //static DataOutputStream outputstream;
+
     public void login(ActionEvent event) {
 
         //Get username input
@@ -145,6 +141,8 @@ to check is user information is available.*/
             Registeranchorpane.setManaged(false);
             loginVbox.setVisible(true);
         }
+        registerName.setText(null);
+
     }
     public void registerAccount(){
 
