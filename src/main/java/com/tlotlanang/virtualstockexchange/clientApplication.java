@@ -11,11 +11,16 @@ import java.io.IOException;
 public class clientApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(clientApplication.class.getResource("clientGUI.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 750);
-        stage.setTitle("SMALL BUSINESS STOCK EXCHANGE");
-        stage.setScene(scene);
-        stage.show();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(clientApplication.class.getResource("clientGUI.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 750);
+            stage.setTitle("SMALL BUSINESS STOCK EXCHANGE");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Failed to load FXML");
+        }
+
     }
 
 

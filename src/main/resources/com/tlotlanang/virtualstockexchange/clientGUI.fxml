@@ -57,7 +57,7 @@
          <Button fx:id="backToMain" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="412.0" layoutY="9.0" mnemonicParsing="false" onAction="#backMainPage" text="&lt;Back" />
 
          <DatePicker fx:id="registerDateofBirth" layoutX="-94.0" layoutY="409.0" />
-         <Label fx:id="regphoneNumWarning" layoutX="168.0" layoutY="61.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Phone Number" />
+         <Label fx:id="regphoneNumWarning" layoutX="160.0" layoutY="61.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Phone Number" />
          <Label fx:id="regemailwarning" layoutX="-57.0" layoutY="61.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Email Address" />
          <Label fx:id="regNameWarning" layoutX="-57.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Name" />
          <Label fx:id="regSurnameWarn" layoutX="176.0" style="-fx-text-fill: white; -fx-font-weight: BOLD;" text="Surname" />
@@ -87,7 +87,7 @@
                                                        <NumberAxis side="LEFT" />
                                                    </yAxis>
                                                </LineChart>
-                           
+
 
                                            </children>
                                        </AnchorPane>

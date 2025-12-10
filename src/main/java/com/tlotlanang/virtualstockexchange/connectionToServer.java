@@ -16,11 +16,9 @@ public class connectionToServer {
     {
         socket = new Socket("127.0.0.1", 9000);
 
+    } catch(IOException ex) {
+        System.out.println("Socket not connected.");
 
-    } catch(
-    IOException ex)
-    {
-        Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 public static void connectionStreams(){
@@ -29,7 +27,8 @@ public static void connectionStreams(){
         outputstream = new DataOutputStream(socket.getOutputStream());
 
     } catch (IOException e) {
-        throw new RuntimeException(e);
+        System.out.println("Connection Streams not connected.");
+
     }
 
 }
@@ -39,7 +38,8 @@ public static void connectionStreams(){
             outputstream.close();
             socket.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Cannot close connection resources.");
+
         }
 
 
