@@ -32,7 +32,7 @@
             <PasswordField fx:id="loginPassword" />
             <FlowPane hgap="10" prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#login" text="Login" />
+                  <Button mnemonicParsing="false" fx:id="loginButton" onAction="#login" text="Login" />
 
                   <Button id="Register" fx:id="registerButton" mnemonicParsing="false" onAction="#mainregisterButton" text="Register" />
                </children>

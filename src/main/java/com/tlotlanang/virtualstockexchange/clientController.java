@@ -2,12 +2,13 @@ package com.tlotlanang.virtualstockexchange;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.event.ActionEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.time.LocalDate;
+
+import static java.lang.Integer.parseInt;
 
 public class clientController {
     @FXML
@@ -31,15 +32,13 @@ public class clientController {
     private Pane Registeranchorpane;
     @FXML
     private TabPane menuTabpane;
-    @FXML
-    private Button registerButton;
     int phoneNumber;
 
 /*Login page, it communicates with the server when the user wants to log in, the server will communicate with the database
 to check is user information is available.*/
 
     public void login() {
-
+        //resetRegistrationForm();
             //Get username input
             String userName = loginUserName.getText();
             //Get user password input
@@ -51,6 +50,11 @@ to check is user information is available.*/
                 usernamewarning.setTextFill(Color.RED.darker());
                 return;
            } else if (passWord.isEmpty()) {
+                //reset username labels from red warning because the textfield is now filed.
+                usernamewarning.setText("Username");
+                usernamewarning.setTextFill(Color.WHITE);
+
+                //warning for empty password textfield
                 passwordwarning.setText("Please Enter Password!!");
                 passwordwarning.setTextFill(Color.RED.darker());
                 return;
@@ -60,6 +64,7 @@ to check is user information is available.*/
                 connection();
 
                 try {
+
                     //send initial output to inform server this is login button
                     connectionToServer.outputstream.writeUTF("Login");
 
@@ -95,6 +100,7 @@ to check is user information is available.*/
     //Register button in the main page, when clicked,menu page disappears and register page appears
     public void mainregisterButton() {
         if(menuTabpane.isVisible()){
+
             menuTabpane.setVisible(false);
             menuTabpane.setManaged(false);
             Registeranchorpane.setVisible(true);
@@ -102,6 +108,7 @@ to check is user information is available.*/
             loginVbox.setVisible(false);
 
         }
+
         resetLogin();
 
     }
@@ -120,21 +127,32 @@ to check is user information is available.*/
         resetRegistrationForm();
     }
 
-    //Reset registration textfields
+    //Reset registration textfields and labels
     public void resetRegistrationForm(){
-        registerName.setText(null);
-        registerConfPassW.setText(null);
-        registerPhone.setText(null);
-        registerPassword.setText(null);
-        registerEmail.setText(null);
-        registerSurName.setText(null);
-        registerAddress.setText(null);
+        registerName.clear();
+        registerConfPassW.clear();
+        registerPhone.clear();
+        registerPassword.clear();
+        registerEmail.clear();
+        registerSurName.clear();
+        registerAddress.clear();
+        //change warning labels from red to white when inputs are filled
+        regNameWarning.setText("UserName");
+        regNameWarning.setTextFill(Color.WHITE);
+        regSurnameWarn.setText("Surname");
+        regSurnameWarn.setTextFill(Color.WHITE);
+        regemailwarning.setText("Email");
+        regemailwarning.setTextFill(Color.WHITE);
     }
 
-    //To reset login inputs textfields
+    //To reset login inputs textfields and labels
     public void resetLogin(){
-        loginUserName.setText(null);
-        loginPassword.setText(null);
+        loginUserName.clear();
+        loginPassword.clear();
+        usernamewarning.setText("Username");
+        usernamewarning.setTextFill(Color.WHITE);
+        passwordwarning.setText("Password");
+        passwordwarning.setTextFill(Color.WHITE);
     }
     /* */
     public void registerAccount(){
@@ -146,39 +164,68 @@ to check is user information is available.*/
         String confirmPass = registerConfPassW.getText();
         String physicalAddress = registerAddress.getText();
         LocalDate dateOfBirth = registerDateofBirth.getValue();
+        //String dateOfBirth = registerDateofBirth.toString();
+        //Pattern datePatten = Pattern.compile("yyyy-MM-dd");
 
-        //catches interger exception to deal with formatting if input is not an integer, or it is blank
-        try {
-            phoneNumber = Integer.parseInt(registerPhone.getText());
 
-        }catch (NumberFormatException e){
-            regphoneNumWarning.setText("Enter correct Phone Numbers!");
-            regphoneNumWarning.setTextFill(Color.RED.darker());
-            return;
-        }catch (Exception e){
-            regphoneNumWarning.setText("Phone Numbers!");
-            regphoneNumWarning.setTextFill(Color.RED.darker());
-            return;
-        }
 
-        // Condition to validate inputs.
+
+        // Condition to validate null inputs.
          if(userName.isEmpty()){
             regNameWarning.setText("Enter Username!!");
             regNameWarning.setTextFill(Color.RED.darker());
             return;
-        } else if (userSurname.isEmpty()) {
+         } else if (userSurname.isEmpty()) {
+            regNameWarning.setText("UserName");
+            regNameWarning.setTextFill(Color.WHITE);
             regSurnameWarn.setText("Enter Surname!!");
             regSurnameWarn.setTextFill(Color.RED.darker());
              return;
         } else if (emailAddress.isEmpty()) {
+            regSurnameWarn.setText("Surname");
+            regSurnameWarn.setTextFill(Color.WHITE);
             regemailwarning.setText("Enter Email!!");
             regemailwarning.setTextFill(Color.RED.darker());
              return;
         } else if (!emailAddress.contains("@") || !emailAddress.contains(".")) {
+             regSurnameWarn.setText("Surname");
+             regSurnameWarn.setTextFill(Color.WHITE);
              regemailwarning.setText("Enter Correct Email!!");
              regemailwarning.setTextFill(Color.RED.darker());
+             return;
+         } else if (parseInt(String.valueOf(registerPhone.getLength())) != 10) {
+             regemailwarning.setText("Email");
+             regemailwarning.setTextFill(Color.WHITE);
+             regphoneNumWarning.setText("Enter a 10 digit Number!");
+             regphoneNumWarning.setTextFill(Color.RED.darker());
+             return;
+         }
+        //catches interger exception to deal with formatting if input is not an integer, or if it is blank
+        try {
+            phoneNumber = parseInt(registerPhone.getText());
 
-         } else if (physicalAddress.isEmpty()) {
+        }catch (NumberFormatException e){
+            regemailwarning.setText("Email");
+            regemailwarning.setTextFill(Color.WHITE);
+            regphoneNumWarning.setText("Phone not correct!");
+            regphoneNumWarning.setTextFill(Color.RED.darker());
+            return;
+        }catch (NullPointerException e){
+            regemailwarning.setText("Email");
+            regemailwarning.setTextFill(Color.WHITE);
+            regphoneNumWarning.setText("Enter Numbers");
+            regphoneNumWarning.setTextFill(Color.RED.darker());
+            return;
+        } catch (Exception e){
+            regemailwarning.setText("Email");
+            regemailwarning.setTextFill(Color.WHITE);
+            regphoneNumWarning.setText("Phone Numbers!");
+            regphoneNumWarning.setTextFill(Color.RED.darker());
+            return;
+        }
+         if (physicalAddress.isEmpty()) {
+            regphoneNumWarning.setText("Phone Numbers");
+            regphoneNumWarning.setTextFill(Color.WHITE);
             regaddWarning.setText("Enter Address!!");
             regaddWarning.setTextFill(Color.RED.darker());
              return;
@@ -186,12 +233,22 @@ to check is user information is available.*/
             regPasswordWarn.setText("Enter Password!!");
             regPasswordWarn.setTextFill(Color.RED.darker());
              return;
-        }  else if (confirmPass.isEmpty()) {
-            regconfPassWarn.setText("Confirm Password!!");
+        } else if (passWord.length() < 5) {
+             regphoneNumWarning.setText("Phone Numbers");
+             regphoneNumWarning.setTextFill(Color.WHITE);
+             regPasswordWarn.setText("Weak Password!!");
+             regPasswordWarn.setTextFill(Color.RED.darker());
+             return;
+
+         } else if (confirmPass.isEmpty() || !passWord.equals(confirmPass)) {
+            regPasswordWarn.setText("Password");
+            regPasswordWarn.setTextFill(Color.WHITE);
+            regconfPassWarn.setText("Password not a Match!");
             regconfPassWarn.setTextFill(Color.RED.darker());
              return;
-        } else if (dateOfBirth.equals(null)) {
-
+         } else if (dateOfBirth == null) {
+             regconfPassWarn.setText("Confirm Password");
+             regconfPassWarn.setTextFill(Color.WHITE);
              regbirthDateWarn.setText("Enter Date Of Birth!!");
              regbirthDateWarn.setTextFill(Color.RED.darker());
              return;
@@ -202,7 +259,6 @@ to check is user information is available.*/
         } else {
              //Connection to server
              connection();
-
             try {
                 //send register message to server to inform server to use register method
                 connectionToServer.outputstream.writeUTF("Register");
@@ -227,20 +283,22 @@ to check is user information is available.*/
                 connectionToServer.closeresources();
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                System.out.println("Unable to send initial output Stream.");
 
             }
 
         }
+         //reset registration inputs to empty
         resetRegistrationForm();
     }
+    //connection to server method
     public void connection(){
         try {
             connectionToServer.connectionPorts();
             connectionToServer.connectionStreams();
         } catch (Exception e) {
             System.out.println("No connection to Server.");
-            return;
+
         }
     }
 
