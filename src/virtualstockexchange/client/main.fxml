@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedAreaChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="mainrootpane" prefHeight="800.0" prefWidth="1280.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="virtualstockexchange.client.mainController">
+    <stylesheets>
+        <URL value="@mainCss.css" />
+    </stylesheets>
+   <children>
+      <TabPane id="menuTabpane" layoutX="126.0" layoutY="31.2" prefHeight="769.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Home">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <top>
+                              <AnchorPane prefHeight="51.0" prefWidth="898.0" style="-fx-background-color: springgreen;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="1280.0" text="SMALL BUSINESS STOCK EXCHANGE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </top>
+                           <center>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <StackedAreaChart AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <xAxis>
+                                                    <NumberAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                    <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                                </StackedAreaChart>
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <ListView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                           </center>
+                           <right>
+                              <AnchorPane prefHeight="686.0" prefWidth="322.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <LineChart>
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                          <BarChart>
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </right>
+                           <bottom>
+                              <AnchorPane prefHeight="33.0" prefWidth="898.0" style="-fx-background-color: springgreen;" BorderPane.alignment="CENTER" />
+                           </bottom>
+                           <left>
+                              <VBox prefHeight="686.0" prefWidth="235.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label contentDisplay="CENTER" prefHeight="18.0" prefWidth="234.0" text="                    Currencies">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator prefHeight="14.0" prefWidth="235.0" />
+                                    <ListView prefHeight="282.0" prefWidth="235.0" />
+                                    <Separator prefHeight="66.0" prefWidth="235.0" />
+                                    <Label id="logUserNameWarningLabel" contentDisplay="CENTER" prefHeight="20.0" prefWidth="236.0" text="                        " textFill="RED">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="loginUserName" fx:id="loginUserName" alignment="CENTER" onKeyPressed="#logUserNameKeyPress" onMouseClicked="#logUserNameMouseClick" promptText="UserName/EMail" />
+                                    <Separator prefHeight="24.0" prefWidth="235.0" />
+                                    <PasswordField fx:id="loginPassword" alignment="CENTER" onKeyPressed="#logPassKeyPress" onMouseClicked="#logPassMouseClick" promptText="Password" />
+                                    <Separator prefHeight="19.0" prefWidth="235.0" />
+                                    <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" text="LOGIN">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Button>
+                                 </children>
+                              </VBox>
+                           </left>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Account">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <top>
+                              <AnchorPane prefHeight="54.0" prefWidth="1280.0" style="-fx-background-color: springgreen;" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="58.0" prefWidth="1280.0" text="OPEN AN ACCOUNT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="Arial Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </top>
+                           <left>
+                              <AnchorPane prefHeight="543.0" prefWidth="244.0" BorderPane.alignment="CENTER" />
+                           </left>
+                           <center>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="regUserName" alignment="CENTER" onKeyPressed="#regNameKeyPress" promptText="Name" />
+                                          <TextField fx:id="regSurName" alignment="CENTER" promptText="Surname" GridPane.columnIndex="1" />
+                                          <TextField fx:id="regEMail" alignment="CENTER" onKeyPressed="#regEmailKeyPress" onKeyTyped="#regEmailKeyTyped" promptText="EMail" GridPane.rowIndex="1" />
+                                          <TextField fx:id="regPhone" alignment="CENTER" onKeyPressed="#regNumberKeyPress" onKeyTyped="#regNumberKeyTyped" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextArea fx:id="regAddress" prefHeight="200.0" prefWidth="200.0" promptText="Physical Address" GridPane.rowIndex="2" />
+                                          <TextArea fx:id="regEducation" prefHeight="200.0" prefWidth="200.0" promptText="Education" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <PasswordField fx:id="regPassWord" alignment="CENTER" promptText="PassWord" GridPane.rowIndex="3" />
+                                          <PasswordField fx:id="regConfirmPass" alignment="CENTER" promptText="Confirm PassWord" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <AnchorPane GridPane.rowIndex="4">
+                                             <children>
+                                                <DatePicker fx:id="regDateOfBirth" promptText="Date Of Birth" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="70.0" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <children>
+                                                <CheckBox fx:id="regTerms" mnemonicParsing="false" text="Terms &amp; Conditions" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                   </font></CheckBox>
+                                             </children>
+                                          </AnchorPane>
+                                          <Button fx:id="regButton" mnemonicParsing="false" onAction="#registerAccount" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font></Button>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </center>
+                           <right>
+                              <AnchorPane prefHeight="543.0" prefWidth="243.0" BorderPane.alignment="CENTER" />
+                           </right>
+                           <bottom>
+                              <AnchorPane prefHeight="136.0" prefWidth="1280.0" style="-fx-background-color: springgreen;" BorderPane.alignment="CENTER" />
+                           </bottom>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Tutorials">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Support">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

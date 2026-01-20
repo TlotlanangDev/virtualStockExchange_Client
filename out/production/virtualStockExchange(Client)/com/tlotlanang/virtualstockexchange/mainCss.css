@@ -1,0 +1,102 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+ -fx-background-color: tomato;
+ 
+}
+.tab-pane{
+    -fx-tab-min-height:5em;
+    -fx-tab-min-width:5em;
+    -fx-background-color:tomato;
+     
+}
+.tab{
+     -fx-background-color:springgreen; 
+     -fx-background-radius:10px;
+     -fx-border-width:5px;
+     -fx-cursor:hand;
+     -fx-border-radius:10px;  
+     
+}
+.tab .tab-label{
+      -fx-font-family: Arial;
+       
+}
+.tab:selected{
+    -fx-background-color: turquoise;
+    -fx-background-radius:10px;
+    -fx-border-width:5px;
+    -fx-cursor:hand;
+    -fx-border-radius:10px;
+}
+.tab-pane *.tab-header-background{
+    -fx-background-color:tomato;
+}
+.button{   
+   -fx-background-color: springgreen;
+   -fx-cursor: hand;
+   -fx-background-radius:30px;
+   -fx-pref-width:100px; 
+    -fx-text-align: center;
+
+}
+.button:pressed{
+    -fx-background-color: greenyellow;
+    -fx-border-bottom:40px;
+    -fx-border-radius:10px;
+    -fx-border-color:black;
+}
+
+.label{
+    -fx-text-fill:black;  
+}
+.check-box{
+    -fx-text-fill:black;
+     
+}
+.check-box:focused{
+    -fx-color: chocolate;
+}
+.check-box .box{
+    -fx-background-color: burlywood;
+    -fx-width:50;
+    -fx-height:50;
+    -fx-cursor:hand;
+}
+.date-picker{
+    -fx-background-color: burlywood;
+}
+.text-area{
+    -fx-border-width:5px;
+   -fx-border-color:black;
+   
+   -fx-background-radius:20px;
+}
+.text-field{
+   -fx-border-width:5px;
+   -fx-border-color:black;
+   -fx-border-radius:20px;
+   -fx-background-radius:20px;
+   -fx-text-align: center;
+   -fx-min-height:40px;
+}
+
+.list-view{
+    -fx-background-color: tomato;
+    -fx-border-width:2px;
+    -fx-border-color:brown;
+}
+.list-view .scroll-bar:vertical{
+    -fx-background-color: transparent;
+    -fx-background-radius:0;
+}
+.list-view .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius:0em;
+    -fx-border-radius:2em;
+}
+
+

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="virtualStockExchange_Client_">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/virtualStockExchange_Client_.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
