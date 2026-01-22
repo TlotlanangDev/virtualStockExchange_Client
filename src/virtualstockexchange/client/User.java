@@ -5,6 +5,10 @@
 package virtualstockexchange.client;
 
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import javafx.scene.control.TextField;
 
 
@@ -14,13 +18,13 @@ import javafx.scene.control.TextField;
  * @author Tlotlanang
  */
 
-class User {
+class User{
     private String userName;
     private String passWord;
     private TextField textFieldError;
     private TextField textFieldErrorReset;
     
-    filesLoader filesloader = new filesLoader();
+    connectionToServer connection = new connectionToServer();
 
     
     
@@ -50,23 +54,68 @@ public String getUserNameAndPass() {
          textFieldErrorReset.getStyleClass().add("textfield-error-reverse");
     }
 
-    void setUserNameAndPass(String userName, String passWord) {
-        String myName = "Tlotlanang";
-        String password = "password";
+    void setUserNameAndPass(String userName, String passWord) throws IOException{
+        
         this.userName = userName;
         this.passWord = passWord;
-        if(!userName.equals(myName)){
-            
-            System.out.println("Enter Correct Username!");
+        
+        
+        String initialMessage = "Login";
+        //String inputData;
+        Socket socket  = new Socket("127.0.0.1", 9000);
+        DataOutputStream outputstream = new DataOutputStream(socket.getOutputStream());
+        DataInputStream inputstream = new DataInputStream(socket.getInputStream());
+        
+        connection.setConnectionPorts(socket);
+        connection.getConnectionPorts();
+        connection.setOutputDataStream(outputstream);
+        connection.getOutputstream().writeUTF(initialMessage);
+        connection.setInpuDataStream(inputstream);
+        String serverInitialResponse = connection.getInputstream().readUTF();
+        /*
+        connection.setcloseSocket(socket);
+        connection.getConnectionPorts();
+        connection.setCloseInputStream(inputstream);
+        connection.getInputstream();
+        connection.setCloseOutputStream(outputstream);
+        connection.getOutputstream();
+        */
+        System.out.println("Hey server: " + serverInitialResponse);
+        
+        
+        if(serverInitialResponse.equals(initialMessage)){
+            System.out.println("Matches");
+        
+            //connection.setConnectionPorts(socket);
+            //connection.getConnectionPorts();
+            connection.setOutputDataStream(outputstream);
+            //connection.setOutputDataStream(outputstream);
+            connection.getOutputstream().writeUTF(userName);
+            connection.getOutputstream().writeUTF(passWord);
            
             
-        }else if(!passWord.equals(password)){
+            connection.setInpuDataStream(inputstream);
+            String loginDetailResponse = connection.getInputstream().readUTF();
+            System.out.println(loginDetailResponse);
             
-            System.out.println("Enter Correct PassWord!");   
+            connection.setcloseSocket(socket);
+            connection.getConnectionPorts();
+            connection.setCloseInputStream(inputstream);
+            connection.getInputstream();
+            connection.setCloseOutputStream(outputstream);
+            connection.getOutputstream();
+            
+        
         }else{
-            System.out.println(userName + " " + passWord);
+            System.out.println("Login response error!!");
         }
+        
+        
+        
+        
     }
+
+    
     
    
 }

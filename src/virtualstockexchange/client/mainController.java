@@ -1,11 +1,21 @@
 package virtualstockexchange.client;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.StackedAreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
@@ -18,7 +28,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class mainController {
+public class mainController  implements Initializable{
 
     @FXML
     private Button loginButton;
@@ -34,6 +44,9 @@ public class mainController {
 
     @FXML
     private TextArea regAddress;
+    
+      @FXML
+     private AreaChart<?, ?> marketsChart;
 
     @FXML
     private Button regButton;
@@ -70,6 +83,9 @@ public class mainController {
     
     @FXML
     private Label logUserWarningLabel;
+    
+    DataOutputStream outputstream;
+    DataInputStream inputstream;
     User user = new User();
    
     
@@ -97,7 +113,7 @@ public class mainController {
 
     //Executes when the login button is pressed to send data to the server
     @FXML
-    void login(ActionEvent event) {
+    void login(ActionEvent event) throws IOException {
         
         //local username and password variable to store user input.
         String userName = loginUserName.getText();
@@ -114,7 +130,11 @@ public class mainController {
             user.setTextFieldEmptyError(loginPassword);
             user.getTextFieldEmptyError();
         }else{
+            
             user.setUserNameAndPass(userName, passWord);
+            user.getUserNameAndPass();
+            /*
+            user.getUserNameAndPass();
             user.getUserNameAndPass();
             loginUserName.clear();
             loginPassword.clear();
@@ -122,6 +142,7 @@ public class mainController {
             user.getFieldErrorReset();
             user.setFieldErrorReset(loginPassword);
             user.getFieldErrorReset();
+*/
             
             
         }  
@@ -155,6 +176,26 @@ public class mainController {
     @FXML
     void registerAccount(ActionEvent event) {
         
+        
+    }
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
+        XYChart.Series Series = new XYChart.Series<>();
+        Series.getData().add(new XYChart.Data<>("0", 0));
+        Series.getData().add(new XYChart.Data<>("1", 2));
+        Series.getData().add(new XYChart.Data<>("2", 50));
+        Series.getData().add(new XYChart.Data<>("3", 90));
+       
+        
+        XYChart.Series Series0 = new XYChart.Series<>();
+        Series0.getData().add(new XYChart.Data<>("0", 0));
+        Series0.getData().add(new XYChart.Data<>("1", 25));
+        Series0.getData().add(new XYChart.Data<>("2", 67));
+        Series0.getData().add(new XYChart.Data<>("3", 100));
+        //marketsChart.getData().addAll(Series0);
+         marketsChart.getData().addAll(Series, Series0);
         
     }
     
