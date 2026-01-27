@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package virtualstockexchange.client;
 
 /**
@@ -17,14 +14,30 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class VirtualStockExchangeClient extends Application {
+    filesLoader loadFile = new filesLoader();
 
     /**
      *
      * @param stage
-     * @throws Exception
      */
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage){
+        /*
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("main.fxml"));
+            Scene scene = new Scene(root);
+            String css = this.getClass().getResource("mainCss.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setTitle("SMALL BUSINESS STOCK EXCHANGE");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println("Can't load Main FXML..");
+        }
+                }
+
+        
         try{
         FXMLLoader fxmlLoader = new FXMLLoader(VirtualStockExchangeClient.class.getResource("main.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
@@ -35,9 +48,14 @@ public class VirtualStockExchangeClient extends Application {
             stage.show();
         }catch(IOException e){
             System.out.println("Failed to load FXML!!");
-        }
-    }
 
+    } */
+        loadFile.setUrlLink("main.fxml");
+        loadFile.getUrlLink();
+        loadFile.setMainStage(stage);
+        loadFile.getMainStage();
+        
+    }
 
     public static void main(String[] args) {
         launch(VirtualStockExchangeClient.class,args);

@@ -34,8 +34,6 @@ void setInpuDataStream(DataInputStream inputstream){
   
     try {
         inputstream = new DataInputStream(socket.getInputStream());
-        //inputData = inputstream.readUTF();
-        //System.out.println("From Server:" + inputData);
         
 
     } catch (IOException e) {
@@ -67,11 +65,7 @@ void setOutputDataStream(DataOutputStream outputstream){
     }
 
 }
-    /*
-    public Socket getCloseSocket() {
-        return socket;
-    }
-*/
+    
     void setcloseSocket(Socket socket){
         this.socket = socket;
         
@@ -81,12 +75,7 @@ void setOutputDataStream(DataOutputStream outputstream){
             System.out.println("Cannot Close Socket!");
         }  
     }
-    /*
-    public DataInputStream getCloseInputStream(){
-        
-        return inputstream;
-    }
-*/
+    
     void setCloseInputStream(DataInputStream inputstream){
         this.inputstream = inputstream;
         try {

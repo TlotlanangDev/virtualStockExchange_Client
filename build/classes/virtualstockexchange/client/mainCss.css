@@ -74,6 +74,14 @@
    -fx-background-color:lemonchiffon;
    -fx-background-radius:20px;
 }
+.text-area-error{
+    -fx-border-width:5px;
+   -fx-border-color:red;
+   -fx-border-radius:20px;
+   -fx-background-radius:20px;
+   -fx-text-align: center;
+   -fx-min-height:40px;
+}
 .text-field{
    -fx-border-width:5px;
    -fx-border-color:black;

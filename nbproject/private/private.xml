@@ -4,9 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/VirtualStockExchangeClient.java</file>
-            <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/mainController.java</file>
-            <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/connectionToServer.java</file>
             <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/User.java</file>
+            <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/mainController.java</file>
+            <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/Errors.java</file>
+            <file>file:/C:/Users/tlotl/OneDrive/Documents/GitHub/VirtualStockExchange_Client/src/virtualstockexchange/client/filesLoader.java</file>
         </group>
     </open-files>
 </project-private>
