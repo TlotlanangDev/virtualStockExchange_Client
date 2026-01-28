@@ -18,29 +18,51 @@ import javafx.stage.Stage;
 
  class filesLoader {
     @FXML
-    private String urlLink;
+    private String fxmlStringLink;
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    public String getUrlLink() {
-        return urlLink;
+    String fxmlTittleLink;
+    String cssFileLink;
+    
+    
+    //File tittle to be used when switching scenes.
+    public String getFxmlTittleLink() {
+        return fxmlTittleLink;
     }
 
-    public void setUrlLink(String urlLink) {
-        this.urlLink = urlLink;
-        //urlLink = "main.fxml";
+    public void setFxmlTittleLink(String fxmlTittleLink) {
+        this.fxmlTittleLink = fxmlTittleLink;
+    }
+    
+    //CSS file name to be used when switching scenes.
+    public String getCssFileLink() {
+        return cssFileLink;
+    }
+
+    public void setCssFileLink(String cssFileLink) {
+        this.cssFileLink = cssFileLink;
+    }
+
+        //FXML file name to be used when switching scenes.
+    public String getFXMLFileLink() {
+        return fxmlStringLink;
+    }
+
+    public void setFXMLFileLink(String fxmlStringLink) {
+        this.fxmlStringLink = fxmlStringLink;
+        
         
     }
 
     public Stage getMainStage() {
         return stage;
     }
-
+    //Main stage setup
     public void setMainStage(Stage stage) {
         this.stage = stage;
         try{
-        FXMLLoader fxmlLoader = new FXMLLoader(VirtualStockExchangeClient.class.getResource(this.urlLink));
+        FXMLLoader fxmlLoader = new FXMLLoader(VirtualStockExchangeClient.class.getResource("main.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             String css = this.getClass().getResource("mainCss.css").toExternalForm();
             scene.getStylesheets().add(css);
@@ -52,62 +74,25 @@ import javafx.stage.Stage;
 
         }
     }
-
-    public Stage getSwitchStage() {
-        return stage;
-    }
-
-    public void setSwitchStage(Stage stage) {
+    //Switch scenes using this method
+    public void switchWindow(ActionEvent e){
+  
         try {
-            //Parent root = new Parent();
-            root = FXMLLoader.load(getClass().getResource(this.urlLink));
-            ActionEvent e = new ActionEvent();
-            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-             
+            
+            root = FXMLLoader.load(getClass().getResource(this.fxmlStringLink));
             scene = new Scene(root);
-            String css = this.getClass().getResource("mainCss.css").toExternalForm();
+            String css = this.getClass().getResource(this.cssFileLink).toExternalForm();
             scene.getStylesheets().add(css);
-            stage.setTitle("PORTFOLIO");
+            stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+            stage.setTitle(this.fxmlTittleLink);
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            System.out.println("Cannot load portfolio...");
-        }
-        
+            System.out.println("Cant open portfolio FXML!");
+        } 
     }
 
-    public Scene getSwitchScene() {
-        return scene;
-    }
-
-    public void setSwitchScene(Scene scene) {
-        this.scene = scene;
-        scene = new Scene(root);
-        String css = this.getClass().getResource("mainCss.css").toExternalForm();
-        scene.getStylesheets().add(css);
-        
-        
-    }
-
-    public Parent getSwitchRoot() {
-        return root;
-    }
-
-    public void setSwitchRoot(Parent root) {
-        try {
-            this.root = root;
-            root = FXMLLoader.load(getClass().getResource(this.urlLink));
-        } catch (IOException ex) {
-            System.out.println("Root does not exist!!");
-        }
-    }
-    
     
 
-    
-    
-    
-    
-    
-    
+     
 }
