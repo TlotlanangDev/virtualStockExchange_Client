@@ -76,7 +76,7 @@ import javafx.stage.Stage;
     }
     //Switch scenes using this method
     public void switchWindow(ActionEvent e){
-  
+        
         try {
             
             root = FXMLLoader.load(getClass().getResource(this.fxmlStringLink));

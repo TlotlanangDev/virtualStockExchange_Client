@@ -52,7 +52,7 @@
                            <center>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <SplitPane dividerPositions="0.7017923362175524" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
@@ -66,9 +66,9 @@
                                                 </AreaChart>
                                              </children>
                                           </AnchorPane>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="721.0">
                                              <children>
-                                                <ListView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ListView layoutY="88.8" prefHeight="233.0" prefWidth="721.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                       </items>
@@ -115,15 +115,34 @@
                                     </Label>
                                     <Separator prefHeight="14.0" prefWidth="235.0" />
                                     <ListView prefHeight="282.0" prefWidth="235.0" />
-                                    <Separator prefHeight="66.0" prefWidth="235.0" />
+                                    <Separator prefHeight="30.0" prefWidth="235.0" />
+                                    <AnchorPane prefHeight="36.0" prefWidth="235.0">
+                                       <children>
+                                          <SplitPane dividerPositions="0.5050403225806452" layoutX="18.0" layoutY="14.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <items>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                   <children>
+                                                      <CheckBox layoutX="21.0" layoutY="12.0" mnemonicParsing="false" text="Investor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                   <children>
+                                                      <CheckBox layoutY="12.0" mnemonicParsing="false" text="Business" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                            </items>
+                                          </SplitPane>
+                                       </children>
+                                    </AnchorPane>
                                     <Label id="logUserNameWarningLabel" contentDisplay="CENTER" prefHeight="20.0" prefWidth="236.0" text="                        " textFill="RED">
                                        <font>
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField id="loginUserName" fx:id="loginUserName" alignment="CENTER" onKeyPressed="#logUserNameKeyPress" onMouseClicked="#logUserNameMouseClick" promptText="UserName/EMail" />
+                                    <Separator prefWidth="200.0" />
+                                    <TextField id="loginUserName" fx:id="logInNameField" alignment="CENTER" onKeyPressed="#logUserNameKeyPress" promptText="UserName/EMail" />
                                     <Separator prefHeight="24.0" prefWidth="235.0" />
-                                    <PasswordField fx:id="loginPassword" alignment="CENTER" onKeyPressed="#logPassKeyPress" onMouseClicked="#logPassMouseClick" promptText="Password" />
+                                    <PasswordField fx:id="loginPassField" alignment="CENTER" onKeyPressed="#logPassKeyPress" promptText="Password" />
                                     <Separator prefHeight="19.0" prefWidth="235.0" />
                                     <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" text="LOGIN">
                                        <font>

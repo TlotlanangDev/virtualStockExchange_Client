@@ -36,16 +36,16 @@ public class mainController  implements Initializable{
     private Stage stage;
     private Scene scene;
     private Parent root;
-    filesLoader loadFile = new filesLoader();
+    
 
     @FXML
     private Button loginButton;
 
     @FXML
-    private PasswordField loginPassword;
+    private PasswordField loginPassField;
 
     @FXML
-    private TextField loginUserName;
+    private TextField logInNameField;
     
     @FXML
     private AnchorPane mainrootpane;
@@ -94,7 +94,8 @@ public class mainController  implements Initializable{
     
     User user = new User();
     Errors errors = new Errors();
-   
+    filesLoader loadFile = new filesLoader();
+    //ActionEvent event = new ActionEvent();
     
 
     @FXML
@@ -102,73 +103,36 @@ public class mainController  implements Initializable{
        
        
     }
-
+    /*
     @FXML
     void logPassMouseClick(MouseEvent event) {
-
-    }
+        System.out.println("Mouse Event");
+    } */
 
     @FXML
     void logUserNameKeyPress(KeyEvent event) {
         
     }
-
+    /*
     @FXML
     void logUserNameMouseClick(MouseEvent event) {
+        System.out.println("Mouse Event 2");
 
-    }
+    } */
 
     //Executes when the login button is pressed to send data to the server
     @FXML
     void login(ActionEvent event){
         
         //local username and password variable to store user input.
-        String userName = loginUserName.getText();
-        String passWord = loginPassword.getText();
-        
-        //validate input before sending data.
-        /*
-        while(userName.isEmpty()){
-            errors.setFieldErrorReset(loginPassword);
-            errors.getFieldErrorReset();
-            errors.setTextFieldEmptyError(loginUserName);
-            errors.getTextFieldEmptyError();
-            return;
+        String userName = logInNameField.getText();
+        String passWord = loginPassField.getText();
             
-        }
-        while(passWord.isEmpty()){
-            errors.setFieldErrorReset(loginUserName);
-            errors.getFieldErrorReset(); 
-            errors.setTextFieldEmptyError(loginPassword);
-            errors.getTextFieldEmptyError();
-            return;
-            
-        } */
-            errors.setFieldEmptyChecker(userName);
-            errors.getFieldEmptyChecker();
-            errors.setFieldEmptyChecker(passWord);
-            errors.getFieldEmptyChecker();
-            
-            user.setLoginInput(userName, passWord);
+            //send data to database
+            user.setLoginInput(userName, passWord, logInNameField, loginPassField, event);
             user.getLoginInput();
-            loginUserName.clear();
-            loginPassword.clear();
-            errors.setFieldErrorReset(loginUserName);
-            errors.getFieldErrorReset();
-            errors.setFieldErrorReset(loginPassword);
-            errors.getFieldErrorReset();
-            
-            String fxmlStringLink = "portfolio.fxml";
-            String cssFileLink= "mainCss.css";
-            String fxmlTittleLink = "PORTFOLIO";
-            loadFile.setFXMLFileLink(fxmlStringLink);
-            loadFile.getFXMLFileLink();
-            loadFile.setCssFileLink(cssFileLink);
-            loadFile.setFxmlTittleLink(fxmlTittleLink);
-            loadFile.getFxmlTittleLink();
-            loadFile.getCssFileLink();
-            loadFile.switchWindow(event);
-         
+               
+                       
     }
 
     @FXML

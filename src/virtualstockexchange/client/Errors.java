@@ -20,7 +20,7 @@ public class Errors {
     private String phoneNumber;
     private String Email;
     
-    //Point to the textfield when it is empty there
+    //Point to the textfield that is empty
     void setTextFieldEmptyError(TextField textFieldError) {
         this.textFieldError = textFieldError;
         
@@ -49,16 +49,26 @@ public class Errors {
     
     }
     
-    void setFieldEmptyChecker(String textFieldEmpty){
+    void setFieldEmptyChecker(String textFieldEmpty, TextField textFieldError){
         this.textFieldEmpty = textFieldEmpty;
+        this.textFieldError = textFieldError;
+        
         while(textFieldEmpty.isEmpty()){
-            System.out.println("Null null");
-            return;
+            
+            this.setTextFieldEmptyError(textFieldError);
+            this.getTextFieldEmptyError();
+            textFieldError.requestFocus();
+            
+            break;
+            
         }
+        
+        
         
     }
     public String getFieldEmptyChecker(){
         return textFieldEmpty;
+        
     }
     public String getEmailChecker(){
         return Email;

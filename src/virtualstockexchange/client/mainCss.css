@@ -12,6 +12,22 @@
     -fx-background-color: deepskyblue;
      
 }
+
+.split-pane{
+    -fx-background-color:transparent;
+}
+.split-pane-divider{
+    -fx-background-color:transparent;
+}
+
+.separator:horizontal .line{
+    -fx-background-color:transparent;
+}
+
+.chart-bar{
+    -fx-background-color:red;
+}
+
 .tab{
      -fx-background-color: palegreen; 
      -fx-background-radius:10px;
