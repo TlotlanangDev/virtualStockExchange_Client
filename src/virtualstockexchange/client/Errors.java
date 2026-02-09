@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package virtualstockexchange.client;
 
 import javafx.scene.control.TextArea;
@@ -58,13 +55,10 @@ public class Errors {
             this.setTextFieldEmptyError(textFieldError);
             this.getTextFieldEmptyError();
             textFieldError.requestFocus();
-            
             break;
             
         }
-        
-        
-        
+          
     }
     public String getFieldEmptyChecker(){
         return textFieldEmpty;

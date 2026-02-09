@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Tlotlanang
  */
-
+//The filesloader class will allow us to swtich different scenes with the same methods but changing only links and Tittles.
  class filesLoader {
     @FXML
     private String fxmlStringLink;
@@ -74,7 +74,7 @@ import javafx.stage.Stage;
 
         }
     }
-    //Switch scenes using this method
+    //Switch scenes while using the same stage.
     public void switchWindow(ActionEvent e){
         
         try {
@@ -88,7 +88,7 @@ import javafx.stage.Stage;
             stage.setScene(scene);
             stage.show();
         } catch (IOException ex) {
-            System.out.println("Cant open portfolio FXML!");
+            System.out.println("filesLoader:SwitchWindow error!! Can't open FXML!");
         } 
     }
 

@@ -122,12 +122,12 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                    <children>
-                                                      <CheckBox layoutX="21.0" layoutY="12.0" mnemonicParsing="false" text="Investor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <CheckBox fx:id="investorLogInCheck" layoutX="21.0" layoutY="12.0" mnemonicParsing="false" text="Investor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                    <children>
-                                                      <CheckBox layoutY="12.0" mnemonicParsing="false" text="Business" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <CheckBox fx:id="businessCheckBox" layoutY="12.0" mnemonicParsing="false" text="Business" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                    </children>
                                                 </AnchorPane>
                                             </items>
@@ -192,14 +192,13 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <TextField fx:id="regUserName" alignment="CENTER" onKeyPressed="#regNameKeyPress" promptText="Name" />
-                                          <TextField fx:id="regSurName" alignment="CENTER" promptText="Surname" GridPane.columnIndex="1" />
-                                          <TextField fx:id="regEMail" alignment="CENTER" onKeyPressed="#regEmailKeyPress" onKeyTyped="#regEmailKeyTyped" promptText="EMail" GridPane.rowIndex="1" />
-                                          <TextField fx:id="regPhone" alignment="CENTER" onKeyPressed="#regNumberKeyPress" onKeyTyped="#regNumberKeyTyped" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="regUserNameField" alignment="CENTER" onKeyPressed="#regNameKeyPress" promptText="Name" />
+                                          <TextField fx:id="regSurNameField" alignment="CENTER" promptText="Surname" GridPane.columnIndex="1" />
+                                          <TextField fx:id="regEMailField" alignment="CENTER" onKeyPressed="#regEmailKeyPress" onKeyTyped="#regEmailKeyTyped" promptText="EMail" GridPane.rowIndex="1" />
+                                          <TextField fx:id="regPhoneField" alignment="CENTER" onKeyPressed="#regNumberKeyPress" onKeyTyped="#regNumberKeyTyped" promptText="Phone Number" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <TextArea fx:id="regAddress" prefHeight="200.0" prefWidth="200.0" promptText="Physical Address" GridPane.rowIndex="2" />
                                           <TextArea fx:id="regEducation" prefHeight="200.0" prefWidth="200.0" promptText="Education" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <PasswordField fx:id="regPassWord" alignment="CENTER" promptText="PassWord" GridPane.rowIndex="3" />
-                                          <PasswordField fx:id="regConfirmPass" alignment="CENTER" promptText="Confirm PassWord" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <PasswordField fx:id="regConfirmPassField" alignment="CENTER" promptText="Confirm PassWord" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <AnchorPane GridPane.rowIndex="4">
                                              <children>
                                                 <DatePicker fx:id="regDateOfBirth" promptText="Date Of Birth" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="70.0" />
@@ -217,6 +216,7 @@
                                              <font>
                                                 <Font name="System Bold" size="13.0" />
                                              </font></Button>
+                                          <PasswordField fx:id="regPassWordField" alignment="CENTER" promptText="PassWord" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
                                  </children>

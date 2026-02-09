@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.time.LocalDate;
 import javafx.event.ActionEvent;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -19,19 +20,15 @@ import javafx.scene.control.TextField;
  */
 
 class User{
-    private String loginUserName;
-    private String loginPassWord;
-    private String registerUserName;
-    private String registerSurName;
-    private String registerEmail;
-    private String registerPhone;
-    private String registerAddress;
-    private String registerEducation;
-    private String registerpassW;
-    private String RegisterConPassW;
+    private String loginUserName, loginPassWord;
+    private String logInInputText;
+    private TextField logInInputField;
+    private String registerUserName, registerSurName, registerEmail, registerPhone, registerAddress, registerEducation, 
+                   registerpassW, RegisterConPassW;
+    private TextField logInNameField, regUserNameField, regSurNameField, regEMailField, regPhoneField;
+    private TextArea regAddressArea, regEducationArea;
+    private PasswordField loginPassField, regPassWordField, regConfirmPassField;
     private LocalDate regDateofBirth;
-    private TextField logInNameField;
-    private TextField loginPassField;
     
     
     connectionToServer connection = new connectionToServer();
@@ -39,40 +36,21 @@ class User{
     Errors errors = new Errors();
  
     //get loginUserName
-public String getLoginInput() {
+    public String getLoginInput() {
         return loginUserName + loginPassWord;
     }
-
-    void setLoginInput(String userName, String passWord, TextField logInNameField, TextField loginPassField, ActionEvent event){
+    //send login data to the database and get a response
+    void setLoginInput(String userName, String passWord, ActionEvent event){
         
-        this.loginUserName = userName;
-        this.loginPassWord = passWord;
-        this.logInNameField = logInNameField;
-        this.loginPassField = loginPassField;
-        
-        if(userName == null | userName.isEmpty()){
-            
-            errors.setFieldErrorReset(loginPassField);
-            errors.getFieldErrorReset();
-            errors.setFieldEmptyChecker(userName, logInNameField);
-            errors.getFieldEmptyChecker();
-            return;
-        }else if(passWord == null | passWord.isEmpty()){
-            errors.setFieldErrorReset(logInNameField);
-            errors.getFieldErrorReset();
-            errors.setFieldEmptyChecker(passWord, loginPassField);
-            errors.getFieldEmptyChecker();
-            return;
-        }
-      
-    
         String initialMessage = "Login";
         String loggedInResponse = "LoggedIn";
         String notLoggedInResponse = "NotLoggedIn";
+        int portNumber = 9000;
+        String netWorkAddress = "127.0.0.1";
         
         Socket socket;
         try {
-            socket = new Socket("127.0.0.1", 9000);
+            socket = new Socket(netWorkAddress, portNumber);
         
         DataOutputStream outputstream = new DataOutputStream(socket.getOutputStream());
         DataInputStream inputstream = new DataInputStream(socket.getInputStream());
@@ -88,28 +66,21 @@ public String getLoginInput() {
         //After gettting a response, we send username and password to server to check if available on the database
         if(serverInitialResponse.equals(initialMessage)){
             
+                
                     connection.setOutputDataStream(outputstream);
                     connection.getOutputstream().writeUTF(userName);
                     connection.getOutputstream().writeUTF(passWord);
                     connection.setInpuDataStream(inputstream);
                     String loginDetailResponse = connection.getInputstream().readUTF();
+                    //if response is logged in we open portfolio, if notloggedin we return login error.
                     if(loginDetailResponse.equals(loggedInResponse)){
+                    loadScene(event);
                     
-                    String fxmlStringLink = "portfolio.fxml";
-                    String cssFileLink= "mainCss.css";
-                    String fxmlTittleLink = "PORTFOLIO";
-                    loadFile.setFXMLFileLink(fxmlStringLink);
-                    loadFile.getFXMLFileLink();
-                    loadFile.setCssFileLink(cssFileLink);
-                    loadFile.getCssFileLink();
-                    loadFile.setFxmlTittleLink(fxmlTittleLink);
-                    loadFile.getFxmlTittleLink();
-                    loadFile.switchWindow(event);
-            }else if(loginDetailResponse.equals(notLoggedInResponse)){
-                    System.out.println("Not logged In");
-            }else{
-                    System.out.println("LoggedIN/NotLogged response from server error!!!");
-            }
+                    }else if(loginDetailResponse.equals(notLoggedInResponse)){
+                            System.out.println("UserName and Password do not match..");
+                    }else{
+                            System.out.println("LoggedIN/NotLogged response from server error!!!");
+                         }
            
             //Close resources
             connection.setcloseSocket(socket);
@@ -126,14 +97,51 @@ public String getLoginInput() {
                 System.out.println("User: setlogInInput error!!(Cannot send Data to Server!!)");
             }
         
-    }
+    } 
 
     public String getRegisterInput() {
         return registerAddress;
     }
 
-    void setRegisterInput(String registerAddress) {
+    void setRegisterInput(String registerAddress,String registerUserName, String registerSurName, String registerEmail, 
+                            String registerPhone, String registerEducation, String registerpassW, String RegisterConPassW, 
+                            TextField regUserNameField, TextField regSurNameField, TextField regEMailField, TextField regPhoneField, 
+                            TextArea regAddressArea, TextArea regEducationArea, PasswordField regPassWordField, 
+                            PasswordField regConfirmPassField, LocalDate regDateofBirth) {
+        this.registerUserName = registerUserName;
+        this.registerSurName = registerSurName;
+        this.registerEmail = registerEmail;
+        this.registerPhone = registerPhone; 
         this.registerAddress = registerAddress;
+        this.registerEducation = registerEducation;
+        this.registerpassW = registerpassW;
+        this.RegisterConPassW = RegisterConPassW;
+        this.regUserNameField = regUserNameField;
+        this.regSurNameField = regSurNameField;
+        this.regEMailField = regEMailField;
+        this.regPhoneField = regPhoneField;
+        this.regAddressArea = regAddressArea;
+        this.regEducationArea = regEducationArea;
+        this.regPassWordField = regPassWordField;
+        this.regConfirmPassField = regConfirmPassField;
+        this.regDateofBirth = regDateofBirth;
+                
+    }
+    
+    //Load a different FXML file using the same stage and switching scenes
+    private void loadScene(ActionEvent event) {
+        
+                    String fxmlStringLink = "portfolio.fxml";//FXML file link for portfolio
+                    String cssFileLink= "mainCss.css";//CSS file link
+                    String fxmlTittleLink = "PORTFOLIO";//FXML file tittle link
+                    
+                    loadFile.setFXMLFileLink(fxmlStringLink); //load fxml file
+                    loadFile.getFXMLFileLink();
+                    loadFile.setCssFileLink(cssFileLink); //load CSS file
+                    loadFile.getCssFileLink();
+                    loadFile.setFxmlTittleLink(fxmlTittleLink); //Change Title page
+                    loadFile.getFxmlTittleLink();
+                    loadFile.switchWindow(event);
     }
     
     
