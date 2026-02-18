@@ -135,7 +135,7 @@ public class mainController  implements Initializable{
        String surName = regSurNameField.getText();
        String eMail = regEMailField.getText();
        String phoneNumber = regPhoneField.getText();
-       //String PhysicalAddress = regAddressArea.getText();
+       String PhysicalAddress = regAddressArea.getText();
        //String Education = regEducationArea.getText();
        String passWord = regPassWordField.getText();
        String ConfirmPassWord = regConfirmPassField.getText();
@@ -145,8 +145,8 @@ public class mainController  implements Initializable{
        validateInput.setUserInputText(surName, regSurNameField);
        validateInput.setUserInputText(eMail, regEMailField);
        validateInput.setUserInputText(phoneNumber, regPhoneField);
-       //validateInput.setUserInputTextArea(PhysicalAddress, regAddressArea);
-       //validateInput.getUserInputTextArea();
+       validateInput.setUserInputTextArea(PhysicalAddress, regAddressArea);
+       validateInput.getUserInputTextArea();
        validateInput.setUserInputText(passWord, regPassWordField);
        validateInput.setUserInputText(ConfirmPassWord, regConfirmPassField); 
        validateInput.getUserInputText();

@@ -50,7 +50,8 @@ public class VirtualStockExchangeClient extends Application {
             System.out.println("Failed to load FXML!!");
 
     } */
-        loadFile.setFXMLFileLink("main.fxml");
+        String fxmlStringLink = "main.fxml";
+        loadFile.setFXMLFileLink(fxmlStringLink);
         loadFile.getFXMLFileLink();
         loadFile.setMainStage(stage);
         loadFile.getMainStage();
