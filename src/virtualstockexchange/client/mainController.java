@@ -51,12 +51,11 @@ public class mainController  implements Initializable{
     @FXML
     private CheckBox businessCheckBox, investorLogInCheck, regTerms;
 
-    
-    
-    User user = new User();
-    Errors errors = new Errors();
+   
     filesLoader loadFile = new filesLoader();
-    InputValidator validateInput = new InputValidator();
+    loginNameInputField inputboxempty = new loginNameInputField();
+    loginPassField passValidcheck = new loginPassField();
+    
     
 
     @FXML
@@ -89,16 +88,9 @@ public class mainController  implements Initializable{
         String userName = logInNameField.getText();
         String passWord = loginPassField.getText();
         
-        validateInput.setUserInputText(userName, logInNameField);
-        validateInput.setUserInputText(passWord, loginPassField);
-        validateInput.getUserInputText();
-        //Make sure that you only send info to the database when all inputs have data
-        if(userName.isEmpty() | passWord.isEmpty()){
-            System.out.println("Not all fields are field label error  or pop up message..");
-        }else{
-            user.setLoginInput(userName, passWord, event);
-            user.getLoginInput();
-        } 
+        clientUserLogin userLogin = new clientUserLogin();
+        userLogin.userNameLogin(userName, logInNameField);
+        userLogin.passWordLogin(passWord, loginPassField);
             
     }
 
@@ -134,22 +126,14 @@ public class mainController  implements Initializable{
        String UserName = regUserNameField.getText();
        String surName = regSurNameField.getText();
        String eMail = regEMailField.getText();
-       String phoneNumber = regPhoneField.getText();
-       String PhysicalAddress = regAddressArea.getText();
+       //String phoneNumber = regPhoneField.getText();
+       //String PhysicalAddress = regAddressArea.getText();
        //String Education = regEducationArea.getText();
        String passWord = regPassWordField.getText();
        String ConfirmPassWord = regConfirmPassField.getText();
        //LocalDate DateofBirth = regDateOfBirthField.getValue();
        
-       validateInput.setUserInputText(UserName, regUserNameField);
-       validateInput.setUserInputText(surName, regSurNameField);
-       validateInput.setUserInputText(eMail, regEMailField);
-       validateInput.setUserInputText(phoneNumber, regPhoneField);
-       validateInput.setUserInputTextArea(PhysicalAddress, regAddressArea);
-       validateInput.getUserInputTextArea();
-       validateInput.setUserInputText(passWord, regPassWordField);
-       validateInput.setUserInputText(ConfirmPassWord, regConfirmPassField); 
-       validateInput.getUserInputText();
+       
        
        
        
